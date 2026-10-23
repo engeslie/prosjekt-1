@@ -7,13 +7,21 @@ public class MonthlyPower {
     // a) print power usage for a month
     public static void print_PowerUsage(double[][] usage) {
 
-        // TODO
+        for(double[] rad : usage){
+            for( double tall : rad){
+                System.out.print(tall + "kwh ");
+            }
+        }
 
     }
 
     // b) print power prices for a month
     public static void print_PowerPrices(double[][] prices) {
-
+        for(double []rad: prices){
+            for(double tall : rad){
+                System.out.print(tall + "NOK ");
+            }
+        }
         // TODO
 
     }
@@ -22,6 +30,12 @@ public class MonthlyPower {
     public static double computePowerUsage(double[][] usage) {
 
         double sum = 0;
+        for(double [] rad : usage){
+            for(double tall : rad){
+                sum += tall;
+            }
+        }
+
 
         // TODO
 
@@ -33,6 +47,19 @@ public class MonthlyPower {
 
         boolean exceeded = false;
         double usage = 0;
+        int i = 0;
+
+        while(i < powerusage.length && exceeded == false ){
+            for(double tall : powerusage[i]){
+                usage += tall;
+                if (usage>threshold){
+                    return true;
+                }
+
+            } i++;
+
+        }
+
 
         // TODO
 
@@ -41,19 +68,33 @@ public class MonthlyPower {
 
     // e) compute spot price
     public static double computeSpotPrice(double[][] usage, double[][] prices) {
-
         double price = 0;
+        for(int i = 0; i < usage.length; i++){
+            for(int j = 0; j <usage[i].length; j++) {
+                price += prices[i][j] * usage[i][j];
+            }
 
-        // TODO
+
+        }
+
 
         return price;
     }
 
     // f) power support for the month
     public static double computePowerSupport(double[][] usage, double[][] prices) {
-
         double support = 0;
+        int threshold = 5000;
+        double percentage = 0.9;
+        for(int i = 0; i < usage.length; i++){
+            for(int j = 0; j < usage[i].length; j++){
+                if (prices[i][j] > threshold) {
+                    support += (prices[i][j] - threshold)
+                            * percentage * usage[i][j];
 
+                }
+            }
+        }
         // TODO
 
         return support;
@@ -63,8 +104,13 @@ public class MonthlyPower {
     public static double computeNorgesPrice(double[][] usage) {
 
         double price = 0;
+        double norgesPrice = 0.40;
 
-        // TODO
+        for (double[] rad : usage) {
+            for (double tall : rad) {
+                price += tall * norgesPrice;
+            }
+        }
 
         return price;
     }

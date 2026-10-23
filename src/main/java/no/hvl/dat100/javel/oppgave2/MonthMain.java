@@ -16,6 +16,9 @@ public class MonthMain {
         System.out.println("OPPGAVE 2");
         System.out.println("==============");
         System.out.println();
+        MonthlyPower.print_PowerUsage(power_usage_month);
+        System.out.println();
+        MonthlyPower.print_PowerPrices(power_prices_month);
 
         /*
         TODO
