@@ -84,7 +84,7 @@ public class MonthlyPower {
     // f) power support for the month
     public static double computePowerSupport(double[][] usage, double[][] prices) {
         double support = 0;
-        int threshold = 5000;
+        double threshold = 0.9375;
         double percentage = 0.9;
         for(int i = 0; i < usage.length; i++){
             for(int j = 0; j < usage[i].length; j++){
@@ -104,7 +104,7 @@ public class MonthlyPower {
     public static double computeNorgesPrice(double[][] usage) {
 
         double price = 0;
-        double norgesPrice = 0.40;
+        double norgesPrice = 0.50;
 
         for (double[] rad : usage) {
             for (double tall : rad) {

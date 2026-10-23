@@ -100,7 +100,7 @@ public class DailyPower {
         double average = 0;
 
         for(double tall : usage){
-            average= tall;
+            average += tall;
         }
         average = average/usage.length;
         return average;
